@@ -1,1 +1,10 @@
-<p>exercises works!</p>
+<h1>Exercises</h1>
+<mat-form-field appearance="fill">
+  <mat-label>Categories</mat-label>
+  <mat-select [(value)]="selectedCategory">
+    <mat-option *ngFor="let category of categories" [value]="category.id">{{
+      category.name
+    }}</mat-option>
+  </mat-select>
+</mat-form-field>
+<exercise-list [selectedCategory]="selectedCategory"></exercise-list>
