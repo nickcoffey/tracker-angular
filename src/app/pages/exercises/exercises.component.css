@@ -1,0 +1,15 @@
+.exercises-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.exercises-header > h1 {
+  font-size: 300%;
+  padding-top: 16px;
+}
+
+.exercises-add-btn {
+  position: fixed;
+  bottom: 8px;
+  right: 8px;
+}

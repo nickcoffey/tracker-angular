@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ExerciseService } from 'src/app/services/exercise.service';
+import { ExerciseService } from 'src/app/services/exercise/exercise.service';
 import { ExerciseCategory } from 'src/app/shared/types/exercise-category';
 
 @Component({

@@ -1,10 +1,15 @@
-<h1>Exercises</h1>
-<mat-form-field appearance="fill">
-  <mat-label>Categories</mat-label>
-  <mat-select [(value)]="selectedCategory">
-    <mat-option *ngFor="let category of categories" [value]="category.id">{{
-      category.name
-    }}</mat-option>
-  </mat-select>
-</mat-form-field>
+<div class="exercises-header">
+  <h1>Exercises</h1>
+  <mat-form-field appearance="fill">
+    <mat-label>Categories</mat-label>
+    <mat-select [(value)]="selectedCategory">
+      <mat-option *ngFor="let category of categories" [value]="category.id">{{
+        category.name
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
 <exercise-list [selectedCategory]="selectedCategory"></exercise-list>
+<button class="exercises-add-btn" mat-fab color="primary">
+  <mat-icon>add</mat-icon>
+</button>

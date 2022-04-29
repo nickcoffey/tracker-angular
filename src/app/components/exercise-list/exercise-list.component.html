@@ -1,5 +1,5 @@
 <mat-list role="list">
-  <mat-list-item role="listitem" *ngFor="let exercise of exercises">{{
-    exercise.name
-  }}</mat-list-item>
+  <mat-list-item role="listitem" *ngFor="let exercise of exercises; index as i">
+    {{ exercise.name }}<mat-divider *ngIf="exercises.length - 1 > i"></mat-divider>
+  </mat-list-item>
 </mat-list>

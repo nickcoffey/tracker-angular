@@ -1,1 +1,10 @@
-<p>home works!</p>
+<div class="home-header">
+  <h1>Welcome</h1>
+  <p>Let's start a workout</p>
+</div>
+<mat-accordion>
+  <program-list-item
+    *ngFor="let program of programs"
+    [program]="program"
+  ></program-list-item>
+</mat-accordion>

@@ -1,0 +1,16 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title
+      ><strong>{{ program.name }}</strong></mat-panel-title
+    >
+  </mat-expansion-panel-header>
+  <ng-container *ngIf="routines.length > 0; else elseHasRoutines">
+    <div class="routine-list-item" *ngFor="let routine of routines">
+      <h3>{{ routine.name }}</h3>
+      <button mat-raised-button color="primary">View</button>
+    </div>
+  </ng-container>
+  <ng-template #elseHasRoutines>
+    <p>There are no routines in this program</p>
+  </ng-template>
+</mat-expansion-panel>

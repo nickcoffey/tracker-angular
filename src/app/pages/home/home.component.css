@@ -1,0 +1,7 @@
+.home-header {
+    text-align: center;
+}
+.home-header > h1 {
+    padding-top: 16px;
+    font-size: 300%;
+}

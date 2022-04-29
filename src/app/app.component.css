@@ -1,3 +1,6 @@
 .drawer-container {
-    height: 100%;
+  height: 100%;
+}
+.app-container {
+  padding: 8px;
 }

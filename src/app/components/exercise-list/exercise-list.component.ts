@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { ExerciseService } from 'src/app/services/exercise.service';
+import { ExerciseService } from 'src/app/services/exercise/exercise.service';
 import { Exercise } from 'src/app/shared/types/exercise';
 
 @Component({

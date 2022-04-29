@@ -11,11 +11,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ExercisesComponent } from './pages/exercises/exercises.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { ExerciseListComponent } from './components/exercise-list/exercise-list.component';
+import { ProgramListItemComponent } from './components/program-list-item/program-list-item.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { ExerciseListComponent } from './components/exercise-list/exercise-list.
     ExercisesComponent,
     SidenavComponent,
     ExerciseListComponent,
+    ProgramListItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,7 @@ import { ExerciseListComponent } from './components/exercise-list/exercise-list.
     MatSidenavModule,
     MatListModule,
     MatSelectModule,
+    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
