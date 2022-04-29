@@ -1,0 +1,8 @@
+<mat-list>
+  <mat-list-item *ngFor="let option of options">
+    <mat-icon mat-list-icon>{{ option.icon }}</mat-icon>
+    <div mat-line (click)="changeRoute(option.path)">
+      {{ option.name }}
+    </div>
+  </mat-list-item>
+</mat-list>
