@@ -10,6 +10,11 @@
   </mat-form-field>
 </div>
 <exercise-list [selectedCategory]="selectedCategory"></exercise-list>
-<button class="exercises-add-btn" mat-fab color="primary">
+<button
+  class="exercises-add-btn"
+  mat-fab
+  color="primary"
+  (click)="openDialog()"
+>
   <mat-icon>add</mat-icon>
 </button>

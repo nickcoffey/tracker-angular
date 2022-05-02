@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>
+  <ng-container *ngIf="editMode; else createTitle"
+    >Edit {{ name }}</ng-container
+  >
+  <ng-template #createTitle>Create Exercise</ng-template>
+</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill" class="exercise-form-input">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="name" />
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="exercise-form-input">
+    <mat-label>Category</mat-label>
+    <mat-select [(value)]="categoryId">
+      <mat-option *ngFor="let category of categories" [value]="category.id">{{
+        category.name
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="submitForm()">
+    Submit
+  </button>
+  <button mat-raised-button mat-dialog-close cdkFocusInitial>Close</button>
+</div>

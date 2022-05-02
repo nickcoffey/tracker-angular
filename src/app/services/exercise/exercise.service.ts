@@ -4,9 +4,14 @@ import {
   ALL_EXERCISES_URL,
   ALL_EXERCISE_CATEGORY_URL,
   EXERCISES_BY_CATEGORY_URL,
+  EXERCISE_URL,
 } from '../../shared/constants';
 import { AllExerciseCategoryResponse } from '../../shared/types/exercise-category';
-import { ExercisesResponse } from '../../shared/types/exercise';
+import {
+  Exercise,
+  CreateExerciseInput,
+  ExercisesResponse,
+} from '../../shared/types/exercise';
 
 @Injectable({
   providedIn: 'root',
@@ -27,5 +32,9 @@ export class ExerciseService {
     return this.http.get<ExercisesResponse>(EXERCISES_BY_CATEGORY_URL, {
       params: { categoryId },
     });
+  }
+
+  createExercise(exerciseInput: CreateExerciseInput) {
+    return this.http.post<Exercise>(EXERCISE_URL, exerciseInput);
   }
 }
