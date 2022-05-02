@@ -23,6 +23,7 @@ import { ExerciseListComponent } from './components/exercise-list/exercise-list.
 import { ProgramListItemComponent } from './components/program-list-item/program-list-item.component';
 import { ExerciseFormDialogComponent } from './components/exercise-form-dialog/exercise-form-dialog.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { RoutineFormDialogComponent } from './components/routine-form-dialog/routine-form-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     ProgramListItemComponent,
     ExerciseFormDialogComponent,
     ConfirmDialogComponent,
+    RoutineFormDialogComponent,
   ],
   imports: [
     BrowserModule,

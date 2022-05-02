@@ -1,0 +1,12 @@
+<ng-container *ngIf="routine; else createTitle"
+  ><mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput [value]="routineDetails?.name" />
+  </mat-form-field>
+</ng-container>
+<ng-template #createTitle><h1 mat-dialog-title>Create Routine</h1></ng-template>
+<div mat-dialog-content></div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="accent">Submit</button>
+  <button mat-raised-button mat-dialog-close cdkFocusInitial>Close</button>
+</div>

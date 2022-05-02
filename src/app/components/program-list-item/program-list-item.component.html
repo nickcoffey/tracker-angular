@@ -7,7 +7,7 @@
   <ng-container *ngIf="routines.length > 0; else elseHasRoutines">
     <div class="routine-list-item" *ngFor="let routine of routines">
       <h3>{{ routine.name }}</h3>
-      <button mat-raised-button color="primary">View</button>
+      <button mat-raised-button color="primary" (click)="openRoutineFormDialog(routine)">View</button>
     </div>
   </ng-container>
   <ng-template #elseHasRoutines>
