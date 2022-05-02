@@ -37,16 +37,18 @@ export class ExercisesComponent implements OnInit {
   }
 
   openConfirmDialog(exercise: Exercise) {
-    const { id, name } = exercise;
+    const { name, disabled } = exercise;
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
-        title: `Delete ${name}?`,
-        message: `Are you sure you want to delete ${name}?`,
+        title: `${disabled ? 'Disable' : 'Enable'} ${name}?`,
+        message: `Are you sure you want to ${
+          disabled ? 'disable' : 'enable'
+        } ${name}?`,
       },
     });
     dialogRef.componentInstance.onConfirm.subscribe(() => {
       this.exerciseService
-        .deleteExercise(id)
+        .updateExercise(exercise)
         .subscribe(() => this.fetchExercises());
     });
   }

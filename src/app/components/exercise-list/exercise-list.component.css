@@ -7,4 +7,7 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
+} 
+.exercise-list-item.is-disabled {
+  text-decoration: line-through;
 }

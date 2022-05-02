@@ -16,6 +16,7 @@ export class ExerciseFormDialogComponent implements OnInit {
   editMode = false;
   id = 0;
   name = '';
+  disabled = false;
   categoryId: number = 0;
 
   constructor(
@@ -25,10 +26,11 @@ export class ExerciseFormDialogComponent implements OnInit {
     data: Exercise
   ) {
     if (data) {
-      const { id, name, categoryId } = data;
+      const { id, name, disabled, categoryId } = data;
       this.editMode = Boolean(id);
       this.id = id;
       this.name = name;
+      this.disabled = disabled;
       this.categoryId = categoryId;
     }
   }
@@ -48,6 +50,7 @@ export class ExerciseFormDialogComponent implements OnInit {
         .updateExercise({
           id: this.id,
           name: this.name,
+          disabled: this.disabled,
           categoryId: this.categoryId,
         })
         .subscribe(() => this.handleSubmitClose());
@@ -55,6 +58,7 @@ export class ExerciseFormDialogComponent implements OnInit {
       this.exerciseService
         .createExercise({
           name: this.name,
+          disabled: true,
           categoryId: this.categoryId,
         })
         .subscribe(() => this.handleSubmitClose());

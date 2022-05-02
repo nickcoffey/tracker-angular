@@ -1,6 +1,9 @@
 <mat-list role="list" class="exercise-list">
   <mat-list-item role="listitem" *ngFor="let exercise of exercises; index as i">
-    <div class="exercise-list-item">
+    <div
+      class="exercise-list-item"
+      [ngClass]="{ 'is-disabled': exercise.disabled }"
+    >
       {{ exercise.name }}
       <span>
         <button
@@ -11,12 +14,17 @@
           <mat-icon>edit</mat-icon>
         </button>
         <button
+          *ngIf="exercise.disabled; else elseDisableBtn"
           mat-icon-button
-          color="warn"
-          (click)="handleDeleteClick(exercise)"
+          (click)="handleDisableEnableClick(exercise, false)"
         >
-          <mat-icon>delete</mat-icon>
+          <mat-icon>done</mat-icon>
         </button>
+        <ng-template #elseDisableBtn>
+          <button mat-icon-button (click)="handleDisableEnableClick(exercise, true)">
+            <mat-icon>close</mat-icon>
+          </button>
+        </ng-template>
       </span>
     </div>
     <mat-divider *ngIf="exercises.length - 1 > i"></mat-divider>

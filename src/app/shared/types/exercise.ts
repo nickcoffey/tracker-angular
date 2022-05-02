@@ -1,6 +1,7 @@
 export type Exercise = {
   id: number;
   name: string;
+  disabled: boolean;
   categoryId: number;
 };
 
@@ -10,5 +11,6 @@ export type ExercisesResponse = {
 
 export type CreateExerciseInput = {
   name: string;
+  disabled: boolean;
   categoryId: number;
 };
