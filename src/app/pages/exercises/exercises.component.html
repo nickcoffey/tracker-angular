@@ -14,13 +14,14 @@
 </div>
 <exercise-list
   [exercises]="exercises"
-  (openEditDialog)="openDialog($event)"
+  (openEditDialog)="openFormDialog($event)"
+  (openDeleteDialog)="openConfirmDialog($event)"
 ></exercise-list>
 <button
   class="exercises-add-btn"
   mat-fab
   color="primary"
-  (click)="openDialog()"
+  (click)="openFormDialog()"
 >
   <mat-icon>add</mat-icon>
 </button>

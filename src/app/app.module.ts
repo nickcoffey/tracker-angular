@@ -22,6 +22,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { ExerciseListComponent } from './components/exercise-list/exercise-list.component';
 import { ProgramListItemComponent } from './components/program-list-item/program-list-item.component';
 import { ExerciseFormDialogComponent } from './components/exercise-form-dialog/exercise-form-dialog.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ExerciseFormDialogComponent } from './components/exercise-form-dialog/e
     ExerciseListComponent,
     ProgramListItemComponent,
     ExerciseFormDialogComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,

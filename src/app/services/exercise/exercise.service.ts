@@ -41,4 +41,8 @@ export class ExerciseService {
   updateExercise(exerciseInput: Exercise) {
     return this.http.put<Exercise>(EXERCISE_URL, exerciseInput);
   }
+
+  deleteExercise(id: number) {
+    return this.http.delete<Exercise>(EXERCISE_URL, { params: { id } });
+  }
 }

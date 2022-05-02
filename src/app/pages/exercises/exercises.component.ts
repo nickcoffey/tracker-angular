@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from 'src/app/components/confirm-dialog/confirm-dialog.component';
 import { ExerciseFormDialogComponent } from 'src/app/components/exercise-form-dialog/exercise-form-dialog.component';
 import { ExerciseService } from 'src/app/services/exercise/exercise.service';
 import { Exercise } from 'src/app/shared/types/exercise';
@@ -35,12 +36,26 @@ export class ExercisesComponent implements OnInit {
     this.fetchExercises();
   }
 
-  openDialog(exercise?: Exercise) {
+  openConfirmDialog(exercise: Exercise) {
+    const { id, name } = exercise;
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: `Delete ${name}?`,
+        message: `Are you sure you want to delete ${name}?`,
+      },
+    });
+    dialogRef.componentInstance.onConfirm.subscribe(() => {
+      this.exerciseService
+        .deleteExercise(id)
+        .subscribe(() => this.fetchExercises());
+    });
+  }
+
+  openFormDialog(exercise?: Exercise) {
     const dialogRef = this.dialog.open(ExerciseFormDialogComponent, {
       data: exercise,
     });
     dialogRef.componentInstance.onSubmit.subscribe(() => {
-      console.log('FETCH EXERCISES');
       this.fetchExercises();
     });
   }

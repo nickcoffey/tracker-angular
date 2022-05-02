@@ -2,13 +2,22 @@
   <mat-list-item role="listitem" *ngFor="let exercise of exercises; index as i">
     <div class="exercise-list-item">
       {{ exercise.name }}
-      <button
-        mat-icon-button
-        color="accent"
-        (click)="handleEditClick(exercise)"
-      >
-        <mat-icon>edit</mat-icon>
-      </button>
+      <span>
+        <button
+          mat-icon-button
+          color="accent"
+          (click)="handleEditClick(exercise)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="warn"
+          (click)="handleDeleteClick(exercise)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </span>
     </div>
     <mat-divider *ngIf="exercises.length - 1 > i"></mat-divider>
   </mat-list-item>

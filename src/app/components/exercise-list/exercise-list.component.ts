@@ -9,10 +9,15 @@ import { Exercise } from 'src/app/shared/types/exercise';
 export class ExerciseListComponent {
   @Input() exercises: Exercise[] = [];
   @Output() openEditDialog = new EventEmitter<Exercise>();
+  @Output() openDeleteDialog = new EventEmitter<Exercise>();
 
   constructor() {}
 
   handleEditClick(exercise: Exercise) {
     this.openEditDialog.emit(exercise);
+  }
+
+  handleDeleteClick(exercise: Exercise) {
+    this.openDeleteDialog.emit(exercise);
   }
 }
