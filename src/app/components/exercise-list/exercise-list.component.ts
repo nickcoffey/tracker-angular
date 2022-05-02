@@ -1,5 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
-import { ExerciseService } from 'src/app/services/exercise/exercise.service';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Exercise } from 'src/app/shared/types/exercise';
 
 @Component({
@@ -7,15 +6,13 @@ import { Exercise } from 'src/app/shared/types/exercise';
   templateUrl: './exercise-list.component.html',
   styleUrls: ['./exercise-list.component.css'],
 })
-export class ExerciseListComponent implements OnChanges {
-  @Input() selectedCategory!: number;
-  exercises: Exercise[] = [];
+export class ExerciseListComponent {
+  @Input() exercises: Exercise[] = [];
+  @Output() openEditDialog = new EventEmitter<Exercise>();
 
-  constructor(private exerciseService: ExerciseService) {}
+  constructor() {}
 
-  ngOnChanges() {
-    this.exerciseService
-      .getExercises(this.selectedCategory)
-      .subscribe((res) => (this.exercises = res.exercises));
+  handleEditClick(exercise: Exercise) {
+    this.openEditDialog.emit(exercise);
   }
 }

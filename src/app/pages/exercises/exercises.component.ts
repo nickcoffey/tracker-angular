@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ExerciseFormDialogComponent } from 'src/app/components/exercise-form-dialog/exercise-form-dialog.component';
 import { ExerciseService } from 'src/app/services/exercise/exercise.service';
+import { Exercise } from 'src/app/shared/types/exercise';
 import { ExerciseCategory } from 'src/app/shared/types/exercise-category';
 
 @Component({
@@ -12,6 +13,7 @@ import { ExerciseCategory } from 'src/app/shared/types/exercise-category';
 export class ExercisesComponent implements OnInit {
   categories: ExerciseCategory[] = [{ id: -1, name: 'All' }];
   selectedCategory = -1;
+  exercises: Exercise[] = [];
 
   constructor(
     private exerciseService: ExerciseService,
@@ -25,9 +27,27 @@ export class ExercisesComponent implements OnInit {
         (res) =>
           (this.categories = [...this.categories, ...res.exerciseCategories])
       );
+    this.fetchExercises();
   }
 
-  openDialog() {
-    this.dialog.open(ExerciseFormDialogComponent);
+  handleCategoryChange(categoryId: number) {
+    this.selectedCategory = categoryId;
+    this.fetchExercises();
+  }
+
+  openDialog(exercise?: Exercise) {
+    const dialogRef = this.dialog.open(ExerciseFormDialogComponent, {
+      data: exercise,
+    });
+    dialogRef.componentInstance.onSubmit.subscribe(() => {
+      console.log('FETCH EXERCISES');
+      this.fetchExercises();
+    });
+  }
+
+  fetchExercises() {
+    this.exerciseService
+      .getExercises(this.selectedCategory)
+      .subscribe((res) => (this.exercises = res.exercises));
   }
 }

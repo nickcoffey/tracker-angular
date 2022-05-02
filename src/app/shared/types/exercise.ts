@@ -1,6 +1,7 @@
 export type Exercise = {
   id: number;
   name: string;
+  categoryId: number;
 };
 
 export type ExercisesResponse = {
@@ -8,12 +9,6 @@ export type ExercisesResponse = {
 };
 
 export type CreateExerciseInput = {
-  name: string;
-  categoryId: number;
-};
-
-export type EditExerciseInput = {
-  id: number;
   name: string;
   categoryId: number;
 };

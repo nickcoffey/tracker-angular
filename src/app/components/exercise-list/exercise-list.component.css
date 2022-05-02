@@ -1,0 +1,10 @@
+.exercise-list {
+    padding-bottom: 10vh;
+}
+
+.exercise-list-item {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}

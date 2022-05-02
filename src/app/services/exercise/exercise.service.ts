@@ -37,4 +37,8 @@ export class ExerciseService {
   createExercise(exerciseInput: CreateExerciseInput) {
     return this.http.post<Exercise>(EXERCISE_URL, exerciseInput);
   }
+
+  updateExercise(exerciseInput: Exercise) {
+    return this.http.put<Exercise>(EXERCISE_URL, exerciseInput);
+  }
 }

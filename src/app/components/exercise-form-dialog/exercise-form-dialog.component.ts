@@ -1,6 +1,7 @@
 import { Component, Inject, Output, EventEmitter, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ExerciseService } from 'src/app/services/exercise/exercise.service';
+import { Exercise } from 'src/app/shared/types/exercise';
 import { ExerciseCategory } from 'src/app/shared/types/exercise-category';
 
 @Component({
@@ -9,22 +10,25 @@ import { ExerciseCategory } from 'src/app/shared/types/exercise-category';
   styleUrls: ['./exercise-form-dialog.component.css'],
 })
 export class ExerciseFormDialogComponent implements OnInit {
-  @Output() closeDialog = new EventEmitter();
+  @Output() onSubmit = new EventEmitter();
 
   categories: ExerciseCategory[] = [];
   editMode = false;
+  id = 0;
   name = '';
   categoryId: number = 0;
 
   constructor(
     private dialogRef: MatDialogRef<ExerciseFormDialogComponent>,
     private exerciseService: ExerciseService,
-    @Inject(MAT_DIALOG_DATA) data: { name: string; categoryId: number }
+    @Inject(MAT_DIALOG_DATA)
+    data: Exercise
   ) {
     if (data) {
-      const { name, categoryId } = data;
-      this.editMode = Boolean(name);
-      this.name = '';
+      const { id, name, categoryId } = data;
+      this.editMode = Boolean(id);
+      this.id = id;
+      this.name = name;
       this.categoryId = categoryId;
     }
   }
@@ -40,14 +44,25 @@ export class ExerciseFormDialogComponent implements OnInit {
 
   submitForm() {
     if (this.editMode) {
-      // EDIT HERE
+      this.exerciseService
+        .updateExercise({
+          id: this.id,
+          name: this.name,
+          categoryId: this.categoryId,
+        })
+        .subscribe(() => this.handleSubmitClose());
     } else {
       this.exerciseService
         .createExercise({
           name: this.name,
           categoryId: this.categoryId,
         })
-        .subscribe(() => this.dialogRef.close());
+        .subscribe(() => this.handleSubmitClose());
     }
+  }
+
+  handleSubmitClose() {
+    this.onSubmit.emit();
+    this.dialogRef.close();
   }
 }
