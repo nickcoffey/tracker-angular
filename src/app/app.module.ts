@@ -24,6 +24,7 @@ import { ProgramListItemComponent } from './components/program-list-item/program
 import { ExerciseFormDialogComponent } from './components/exercise-form-dialog/exercise-form-dialog.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { RoutineFormDialogComponent } from './components/routine-form-dialog/routine-form-dialog.component';
+import { ExerciseListDialogComponent } from './components/exercise-list-dialog/exercise-list-dialog.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { RoutineFormDialogComponent } from './components/routine-form-dialog/rou
     ExerciseFormDialogComponent,
     ConfirmDialogComponent,
     RoutineFormDialogComponent,
+    ExerciseListDialogComponent,
   ],
   imports: [
     BrowserModule,

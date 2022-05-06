@@ -1,0 +1,33 @@
+.routine-form-exercise-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.routine-form-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 75vh;
+}
+
+.routine-form-exercise-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.routine-form-set-container {
+  display: flex;
+}
+
+.routine-form-set-input {
+  width: 115px;
+}
+.routine-form-set-input.right {
+  margin-left: 8px;
+}
+
+.routine-form-exercise-divider {
+  margin: 16px 0px;
+}

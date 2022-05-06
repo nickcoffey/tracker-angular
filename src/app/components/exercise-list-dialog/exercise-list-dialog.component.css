@@ -1,0 +1,17 @@
+.exercise-list-dialog-category-select {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.exercise-list {
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.exercise-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}

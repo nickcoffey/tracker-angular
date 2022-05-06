@@ -2,6 +2,13 @@
   <h1>Welcome</h1>
   <p>Let's start a workout</p>
 </div>
+<div class="home-program-header">
+  <h2>Programs</h2>
+  <button mat-raised-button color="accent">
+    Add
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
 <mat-accordion>
   <program-list-item
     *ngFor="let program of programs"

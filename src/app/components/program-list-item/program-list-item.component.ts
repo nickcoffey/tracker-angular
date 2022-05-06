@@ -20,14 +20,32 @@ export class ProgramListItemComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.fetchRoutines()
+  }
+
+  fetchRoutines() {
     this.routineService
       .getRoutinesByProgram(this.program.id)
       .subscribe(({ routines }) => (this.routines = routines));
   }
 
-  openRoutineFormDialog(routine: Routine) {
-    this.dialog.open(RoutineFormDialogComponent, {
-      data: routine,
+  openRoutineEditDialog(routine: Routine) {
+    const dialogRef = this.dialog.open(RoutineFormDialogComponent, {
+      data: { routine, programId: this.program.id },
     });
+    dialogRef.componentInstance.emitSubmit.subscribe(() => {
+      this.fetchRoutines()
+      dialogRef.close()
+    })
+  }
+
+  openRoutineCreateDialog() {
+    const dialogRef = this.dialog.open(RoutineFormDialogComponent, {
+      data: { programId: this.program.id },
+    });
+    dialogRef.componentInstance.emitSubmit.subscribe(() => {
+      this.fetchRoutines()
+      dialogRef.close()
+    })
   }
 }

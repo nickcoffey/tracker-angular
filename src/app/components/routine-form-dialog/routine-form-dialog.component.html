@@ -1,12 +1,60 @@
-<ng-container *ngIf="routine; else createTitle"
-  ><mat-form-field appearance="fill">
-    <mat-label>Name</mat-label>
-    <input matInput [value]="routineDetails?.name" />
-  </mat-form-field>
-</ng-container>
+<h1 mat-dialog-title *ngIf="routine; else createTitle">Edit Routine</h1>
 <ng-template #createTitle><h1 mat-dialog-title>Create Routine</h1></ng-template>
-<div mat-dialog-content></div>
+<div mat-dialog-content class="routine-form-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="routineDetails.name" />
+  </mat-form-field>
+  <div class="routine-form-exercise-header">
+    <h2>Exercises</h2>
+    <button mat-stroked-button color="accent" (click)="addExercise()">
+      Add
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <div *ngFor="let exercise of routineDetails.exercises; index as i">
+    <mat-divider
+      class="routine-form-exercise-divider"
+      *ngIf="i !== 0"
+    ></mat-divider>
+    <div class="routine-form-exercise-name">
+      <strong>{{ exercise.name }}</strong>
+      <button mat-stroked-button color="warn" (click)="removeExercise(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <div
+      *ngFor="let set of exercise.sets; index as j"
+      class="routine-form-set-container"
+    >
+      <mat-form-field appearance="fill" class="routine-form-set-input">
+        <mat-label>Weight</mat-label>
+        <input matInput type="number" [(ngModel)]="set.weight" />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="routine-form-set-input right">
+        <mat-label>Reps</mat-label>
+        <input matInput type="number" [(ngModel)]="set.reps" />
+      </mat-form-field>
+      <button
+        mat-icon-button
+        color="warn"
+        style="margin-top: 4px"
+        (click)="removeSet(i, j)"
+      >
+        <mat-icon>remove</mat-icon>
+      </button>
+    </div>
+    <button
+      mat-stroked-button
+      color="accent"
+      style="width: 100%"
+      (click)="addSet(i)"
+    >
+      Add Set
+    </button>
+  </div>
+</div>
 <div mat-dialog-actions>
-  <button mat-raised-button color="accent">Submit</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
   <button mat-raised-button mat-dialog-close cdkFocusInitial>Close</button>
 </div>

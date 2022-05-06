@@ -1,7 +1,14 @@
 .home-header {
-    text-align: center;
+  text-align: center;
 }
 .home-header > h1 {
-    padding-top: 16px;
-    font-size: 300%;
+  padding-top: 16px;
+  font-size: 300%;
+}
+
+.home-program-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
 }
